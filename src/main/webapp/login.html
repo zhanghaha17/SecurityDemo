@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+</head>
+<body>
+<form class="login-page" action="/login" method="post">
+    <div class="form">
+        <h3>账户登录</h3>
+        <input type="text" placeholder="用户名" name="username" required="required"/></br>
+        <input type="password" placeholder="密码" name="password" required="required"/></br>
+        <span>Remember-Me</span><input type="checkbox" name="remember-me"/></br>
+        <span style="display: inline">
+        <input type="text" name="imageCode" placeholder="验证码"/>
+        <img src="/code/image" onclick="change(this)"/>
+        </span>
+        <button type="submit">登录</button>
+    </div>
+</form>
+</body>
+<script>
+    function change(_self) {
+        var date = new Date().getTime();
+        _self.setAttribute("src","/code/image?"+date);
+
+
+
+        //js原生发请求（get）
+/*        const Http = new XMLHttpRequest();
+        const url='/code/image';
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+        }*/
+
+        //js原生发请求post
+/*        var url = "http://localhost:8080/login";
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', url, true);
+        httpRequest.setRequestHeader("Content-type", "application/json");
+        var obj = {
+            "username": "mkii",
+            "password": "1234"
+        };
+
+        httpRequest.send(JSON.stringify(obj));
+
+        // 响应后的回调函数
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var json = httpRequest.responseText;
+                console.log(json);
+            }
+        };*/
+
+    }
+</script>
+</html>
